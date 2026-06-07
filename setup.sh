@@ -46,7 +46,6 @@ sudo apt-get install -y -qq \
   gnupg \
   ca-certificates \
   lsb-release \
-  software-properties-common \
   unzip \
   zip \
   jq \
@@ -123,6 +122,15 @@ if ! command -v claude &>/dev/null; then
   success "Claude Code installed"
 else
   success "Claude Code already installed"
+fi
+
+# ── opencode ──────────────────────────────────────────────────────────────────
+if ! command -v opencode &>/dev/null; then
+  info "Installing opencode..."
+  npm install -g opencode-ai
+  success "opencode installed"
+else
+  success "opencode already installed"
 fi
 
 # ── uv (Python package manager) ───────────────────────────────────────────────
