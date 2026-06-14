@@ -155,6 +155,21 @@ else
   success "Deno already installed ($(deno --version | head -1))"
 fi
 
+# ── Docker ────────────────────────────────────────────────────────────────────
+if ! command -v docker &>/dev/null; then
+  info "Installing Docker..."
+  curl -fsSL https://download.docker.com/linux/debian/gpg \
+    | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  echo "deb [arch=${ARCH} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
+    | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+  sudo apt-get update -qq
+  sudo apt-get install -y -qq docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  sudo usermod -aG docker "$USER"
+  success "Docker installed — re-login for group membership to take effect"
+else
+  success "Docker already installed ($(docker --version))"
+fi
+
 # ── Developer directory ───────────────────────────────────────────────────────
 DEVDIR="$HOME/Developer"
 if [[ ! -d "$DEVDIR" ]]; then

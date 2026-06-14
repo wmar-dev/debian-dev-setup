@@ -30,6 +30,7 @@ Installs the essentials system-wide using `apt` plus direct installers where nee
 | GitHub CLI (`gh`) | official apt repo |
 | nvm + Node.js 22 LTS | nvm installer |
 | Claude Code CLI | `npm install -g @anthropic-ai/claude-code` |
+| Docker CE | official apt repo (docker.com) |
 | uv (Python package manager) | astral.sh installer |
 | Deno | deno.land installer |
 
@@ -37,6 +38,7 @@ Also:
 - Prompts to configure `git config --global user.name/email`
 - Creates `~/Developer/{projects,learning,scripts,python-template,docker-template}`
 - Adds nvm, uv, and Deno to your shell profile (`.bashrc` / `.zshrc`)
+- Adds user to the `docker` group (re-login required)
 
 ---
 
