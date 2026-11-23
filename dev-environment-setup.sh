@@ -72,11 +72,15 @@ setup_python() {
   info "Installing common packages into template venv..."
   uv pip install \
     --python "$TMPL/.venv/bin/python" \
-    numpy pandas matplotlib seaborn scikit-learn \
+    numpy pandas scipy matplotlib seaborn scikit-learn \
+    torch \
+    jupyter \
+    flask \
     requests httpx \
     pytest ruff \
     python-dotenv \
-    aisuite[anthropic]
+    anthropic \
+    "aisuite[anthropic,google,openai,mcp]"
   success "Python template environment ready"
 
   # Write a sample .env template

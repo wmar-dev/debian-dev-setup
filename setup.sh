@@ -49,8 +49,15 @@ sudo apt-get install -y -qq \
   unzip \
   zip \
   jq \
+  ripgrep \
   tree \
   htop \
+  ncdu \
+  imagemagick \
+  aspell \
+  aspell-en \
+  golang-go \
+  texlive-latex-base \
   ffmpeg \
   graphviz \
   sqlite3 \
@@ -142,6 +149,15 @@ if ! command -v uv &>/dev/null; then
   success "uv installed ($(uv --version 2>/dev/null || echo 'restart shell to verify'))"
 else
   success "uv already installed ($(uv --version))"
+fi
+
+# ── ruff (Python linter/formatter) ────────────────────────────────────────────
+if ! command -v ruff &>/dev/null; then
+  info "Installing ruff..."
+  uv tool install ruff
+  success "ruff installed"
+else
+  success "ruff already installed"
 fi
 
 # ── Deno ──────────────────────────────────────────────────────────────────────
