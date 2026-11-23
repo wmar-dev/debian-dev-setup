@@ -36,6 +36,12 @@ bash -n setup.sh
 bash -n dev-environment-setup.sh
 ```
 
+CI (`.github/workflows/shellcheck.yml`) runs ShellCheck on every push and PR and fails on warnings or errors. Run the same check locally with:
+
+```bash
+shellcheck -S warning *.sh   # or: uvx --from shellcheck-py shellcheck -S warning *.sh
+```
+
 There is no automated test suite — validate changes by running against a fresh Debian container or VM:
 
 ```bash

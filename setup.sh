@@ -191,8 +191,10 @@ DEVDIR="$HOME/Developer"
 if [[ ! -d "$DEVDIR" ]]; then
   info "Creating ~/Developer directory structure..."
   mkdir -p "$DEVDIR"/{projects,learning,scripts,python-template,docker-template}
+  # shellcheck disable=SC2088  # display text, not a path
   success "~/Developer created"
 else
+  # shellcheck disable=SC2088
   success "~/Developer already exists"
 fi
 
